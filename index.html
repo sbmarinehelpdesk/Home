@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SB Marine Help Desk ⚓</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background-color: #f4faff;
+      color: #003f5c;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #006994;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header img {
+      width: 100px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #004d73;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    /* Welcome Section */
+    .welcome {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome h2 {
+      color: #006994;
+      margin-bottom: 15px;
+    }
+
+    .welcome p {
+      font-size: 17px;
+      color: #003f5c;
+    }
+
+    /* Service Grid Styling */
+    section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+      justify-items: center;
+    }
+
+    .card {
+      background: white;
+      width: 230px;
+      height: 230px;
+      padding: 25px 15px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .card h3 {
+      color: #006994;
+      margin-bottom: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 105, 148, 0.3);
+      background-color: #e6f7ff;
+    }
+
+    /* Embedded Google Form */
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20ba5a;
+    }
+
+    footer {
+      background-color: #003f5c;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+
+  <!-- Font Awesome for WhatsApp Icon -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <img src="logo.jpeg" alt="SB Marine Help Desk Logo" />
+    <h1>SB Marine Help Desk ⚓</h1>
+    <p>The ocean of opportunities starts here! 🌊</p>
+  </header>
+
+  <section class="welcome">
+    <h2>Welcome Aboard!</h2>
+    <p>
+      At <strong>SB Marine Help Desk</strong>, we’re dedicated to supporting every seafarer in their professional journey.  
+      Whether it’s certifications, documentation, or job placement, our team ensures smooth sailing at every step.  
+      <br><br>
+      Let’s navigate your maritime career together! ⚓
+    </p>
+  </section>
+
+  <section>
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Watch Keeping & CoP</h3>
+        <p>Help with all marine certifications and documents.</p>
+      </div>
+      <div class="card">
+        <h3>SID Card & CDC Guidance</h3>
+        <p>Support for SID Cards and CDC registration.</p>
+      </div>
+      <div class="card">
+        <h3>Joinings & Placements</h3>
+        <p>Assistance for ship joinings and job opportunities.</p>
+      </div>
+      <div class="card">
+        <h3>Career Assistance</h3>
+        <p>Professional guidance for a successful sea career.</p>
+      </div>
+      <div class="card">
+        <h3>INDOS Support</h3>
+        <p>Help with all INDOS Support queries</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get In Touch</h2>
+
+    <!-- 🔹 Embedded Google Form -->
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSeZf_c4oIWks_rhCGSPD1rVX0umX8VqBAfjRYW-Y4MewZWAWA/viewform?embedded=true" 
+      width="640" 
+      height="700" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0">
+      Loading…
+    </iframe>
+  </section>
+
+  <!-- 💬 Floating WhatsApp Button -->
+  <a href="https://wa.me/919618253374" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>📞 +91 9618253374 | ✉️ sb.marine.help.desk@gmail.com</p>
+    <p>© 2025 SB Marine Help Desk. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

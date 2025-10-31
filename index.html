@@ -14,7 +14,7 @@
     }
 
     header {
-      background-color: #006994;
+      background-color: #209ed8;
       color: white;
       padding: 20px 0;
       text-align: center;
@@ -153,13 +153,55 @@
 </head>
 <body>
   <header>
-    <img src="logo.jpeg" alt="SB Marine Help Desk Logo" />
-    <h1>SB Marine Help Desk ⚓</h1>
-    <p>The ocean of opportunities starts here! 🌊</p>
-  </header>
+  <img src="logo.jpeg" alt="SB Marine Help Desk Logo" />
+  <h1>SB Marine Help Desk ⚓</h1>
+  <p>The ocean of opportunities starts here! 🌊</p>
+</header>
+
+<style>
+  header {
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+    color: #ff8c00; /* Orange text to match your logo */
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Add a dark overlay for readability */
+  header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 20, 50, 0.6); /* navy-blue transparent overlay */
+    z-index: 0;
+  }
+
+  header * {
+    position: relative;
+    z-index: 1; /* Keeps text & logo above overlay */
+  }
+
+  header img {
+    width: 120px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 10px;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+  }
+
+  header h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+
+  header p {
+    font-size: 18px;
+    color: #ffd580; /* lighter orange for contrast */
+  }
+</style>
 
   <section class="welcome">
-    <h2>Welcome Aboard!</h2>
+    <h2>Welcome Onboard!</h2>
     <p>
       At <strong>SB Marine Help Desk</strong>, we’re dedicated to supporting every seafarer in their professional journey.  
       Whether it’s certifications, documentation, or job placement, our team ensures smooth sailing at every step.  
@@ -168,10 +210,12 @@
     </p>
   </section>
 
-  <section>
-    <h2>Our Services</h2>
+<section>
+  <h2 style="text-align:center; color:#00385a;">Our Services</h2>
+  <div class="carousel-container">
+    <button class="arrow left">&#10094;</button>
     <div class="services">
-      <div class="card">
+      <div class="card active">
         <h3>Watch Keeping & CoP</h3>
         <p>Help with all marine certifications and documents.</p>
       </div>
@@ -189,10 +233,165 @@
       </div>
       <div class="card">
         <h3>INDOS Support</h3>
-        <p>Help with all INDOS Support queries</p>
+        <p>Help with all INDOS Support queries.</p>
       </div>
     </div>
-  </section>
+    <button class="arrow right">&#10095;</button>
+  </div>
+</section>
+
+<style>
+  /* === Carousel Layout === */
+  .carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+    overflow: hidden;
+  }
+
+  .services {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s ease-in-out;
+    width: max-content; /* allows all cards to exist in one scrollable line */
+  }
+
+  .card {
+    flex: 0 0 600px; /* fixed width for smoother alignment */
+    margin: 0 15px;
+    background: #001f3f; /* Navy Blue */
+    color: #ff8c00; /* Orange text */
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    opacity: 40;
+    transform: scale(0.9);
+    transition: all 0.6s ease;
+    padding: 40px 25px;
+  }
+
+  .card.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .card h3 {
+    color: #ff8c00;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  .card p {
+    color: #ffae42;
+    font-size: 1.1rem;
+  }
+
+  /* === Arrows === */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: #001f3f;
+    font-size: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .arrow:hover {
+    background: #ff8c00;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .arrow.left {
+    left: 10px;
+  }
+
+  .arrow.right {
+    right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      flex: 0 0 80%;
+      margin: 0 5px;
+    }
+    .arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 28px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".services .card");
+    const services = document.querySelector(".services");
+    const leftArrow = document.querySelector(".arrow.left");
+    const rightArrow = document.querySelector(".arrow.right");
+
+    let index = 0;
+    let interval;
+
+    function updateCarousel() {
+      cards.forEach((card) => card.classList.remove("active"));
+      cards[index].classList.add("active");
+
+      // calculate offset to keep active card centered
+      const cardWidth = cards[0].offsetWidth + 30; // includes margin
+      const containerWidth = document.querySelector(".carousel-container").offsetWidth;
+      const offset = -(index * cardWidth - (containerWidth / 2 - cards[0].offsetWidth / 2));
+      services.style.transform = `translateX(${offset}px)`;
+    }
+
+    function nextCard() {
+      index = (index + 1) % cards.length;
+      updateCarousel();
+    }
+
+    function prevCard() {
+      index = (index - 1 + cards.length) % cards.length;
+      updateCarousel();
+    }
+
+    function startAutoRotate() {
+      interval = setInterval(nextCard, 5000);
+    }
+
+    function stopAutoRotate() {
+      clearInterval(interval);
+    }
+
+    rightArrow.addEventListener("click", () => {
+      stopAutoRotate();
+      nextCard();
+      startAutoRotate();
+    });
+
+    leftArrow.addEventListener("click", () => {
+      stopAutoRotate();
+      prevCard();
+      startAutoRotate();
+    });
+
+    window.addEventListener("resize", updateCarousel);
+
+    updateCarousel();
+    startAutoRotate();
+  });
+</script>
 
   <section id="contact">
     <h2>Get In Touch</h2>
@@ -210,9 +409,46 @@
   </section>
 
   <!-- 💬 Floating WhatsApp Button -->
-  <a href="https://wa.me/919618253374" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+ <!-- 💬 Floating WhatsApp Button -->
+<a href="https://wa.me/919618253374" 
+   class="whatsapp-float" 
+   target="_blank" 
+   title="Chat with us on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- ✅ Correct Font Awesome Link -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #20ba5a;
+  }
+</style>
+
 
   <footer>
     <p>📞 +91 9618253374 | ✉️ sb.marine.help.desk@gmail.com</p>
